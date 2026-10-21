@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Si tu proyecto ya tiene strings.xml, copia dentro de él lo que falte (app_name ya existe). -->
+<resources>
+    <string name="app_name">TomaAwita</string>
+
+    <!-- Inicio -->
+    <string name="home_greeting">¡Hola, %1$s!</string>
+    <string name="home_greeting_anonymous">¡Hola!</string>
+    <string name="home_subtitle">Un vaso a la vez, vas muy bien.</string>
+    <string name="progress_today">Progreso de hoy</string>
+    <string name="of_goal">de %1$s ml</string>
+    <string name="percent_of_goal">%1$d%% de tu meta</string>
+    <string name="register_water_title">Registra tu agua</string>
+    <string name="register_water_subtitle">¿Cuánto bebiste?</string>
+    <string name="customize">Personalizar</string>
+    <string name="add_other_amount">Agregar otra cantidad</string>
+    <string name="custom_amount_configured">%1$d ml configurados</string>
+    <string name="next_reminder_title">Tu próximo recordatorio</string>
+    <string name="next_reminder_subtitle">Mantén tu ritmo durante el día</string>
+    <string name="next_intake">PRÓXIMA TOMA</string>
+    <string name="reminder_detail">Cada %1$d min · hasta las %2$s</string>
+    <string name="reminders_off">Recordatorios desactivados</string>
+    <string name="this_week">Esta semana</string>
+    <string name="days_completed">%1$d de 7 días</string>
+    <string-array name="week_days_short">
+        <item>L</item>
+        <item>M</item>
+        <item>M</item>
+        <item>J</item>
+        <item>V</item>
+        <item>S</item>
+        <item>D</item>
+    </string-array>
+
+    <!-- Barra inferior -->
+    <string name="tab_home">Inicio</string>
+    <string name="tab_goals">Objetivos</string>
+    <string name="add_water">Agregar agua</string>
+
+    <!-- Aviso de límite diario -->
+    <string name="limit_dialog_title">Superarías tu límite diario</string>
+    <string name="limit_dialog_message">Con %1$d ml pasarías tu límite de %2$d ml. ¿Quieres registrarlo de todos modos?</string>
+    <string name="register">Registrar</string>
+    <string name="cancel">Cancelar</string>
+</resources>
