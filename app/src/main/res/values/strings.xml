@@ -4,8 +4,7 @@
     <string name="app_name">TomaAwita</string>
 
     <!-- Inicio -->
-    <string name="home_greeting">¡Hola, %1$s!</string>
-    <string name="home_greeting_anonymous">¡Hola!</string>
+    <string name="home_greeting">¡Hola, buen día!</string>
     <string name="home_subtitle">Un vaso a la vez, vas muy bien.</string>
     <string name="progress_today">Progreso de hoy</string>
     <string name="of_goal">de %1$s ml</string>
@@ -22,6 +21,13 @@
     <string name="reminders_off">Recordatorios desactivados</string>
     <string name="this_week">Esta semana</string>
     <string name="days_completed">%1$d de 7 días</string>
+    <string name="add_amount_label">NUEVO REGISTRO</string>
+    <string name="add_amount_title">Agregar cantidad</string>
+    <string name="add_amount_question">¿Cuánta agua tomaste?</string>
+    <string name="add_amount_cta">Agregar %1$s</string>
+    <string name="close">Cerrar</string>
+    <string name="decrease_amount">Disminuir cantidad</string>
+    <string name="increase_amount">Aumentar cantidad</string>
     <string-array name="week_days_short">
         <item>L</item>
         <item>M</item>

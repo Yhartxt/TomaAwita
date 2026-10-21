@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Archivo NUEVO: se crea junto a strings.xml, Android junta los dos solo. -->
+<resources>
+    <string name="back">Volver</string>
+    <string name="save">Guardar</string>
+    <string name="reminder_new">NUEVO</string>
+    <string name="reminder_title">Agregar recordatorio</string>
+    <string name="reminder_time_label">HORA DEL RECORDATORIO</string>
+    <string name="next_intake_in">Tu próxima toma será dentro de %1$s</string>
+    <plurals name="minutes_count">
+        <item quantity="one">%d minuto</item>
+        <item quantity="other">%d minutos</item>
+    </plurals>
+    <string name="duration_hours">%1$d h</string>
+    <string name="duration_hours_minutes">%1$d h %2$d min</string>
+    <string name="am">AM</string>
+    <string name="pm">PM</string>
+
+    <string name="interval_title">Avisarme cada</string>
+    <string name="interval_subtitle">Tiempo entre una toma y otra</string>
+
+    <string name="repeat_title">Repetir</string>
+    <string name="repeat_subtitle">Selecciona los días</string>
+    <plurals name="days_selected">
+        <item quantity="one">%d día seleccionado</item>
+        <item quantity="other">%d días seleccionados</item>
+    </plurals>
+    <string name="days_none">Selecciona al menos un día</string>
+
+    <string name="amount_title">Cantidad sugerida</string>
+    <string name="amount_subtitle">Lo que planeas beber</string>
+
+    <string name="notif_title">Notificación</string>
+    <string name="notif_on">Sonido y vibración activos</string>
+    <string name="notif_off">Notificación desactivada</string>
+
+    <string name="tip_bold">Un pequeño hábito hace la diferencia.</string>
+    <string name="tip_rest">Te avisaremos con calma, sin interrumpir tu día.</string>
+    <string name="create_reminder">Crear recordatorio</string>
+    <string name="picker_ok">Aceptar</string>
+</resources>

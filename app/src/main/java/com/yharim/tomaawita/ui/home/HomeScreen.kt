@@ -1,6 +1,5 @@
 package com.yharim.tomaawita.ui.home
 
-
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.yharim.tomaawita.R
+import com.yharim.tomaawita.TomaAwitaApplication
 import com.yharim.tomaawita.ui.theme.Ink
 import com.yharim.tomaawita.ui.theme.Muted
 import com.yharim.tomaawita.ui.theme.TomaAwitaTheme
@@ -35,7 +36,19 @@ import java.util.Locale
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    viewModel: WaterViewModel = viewModel()
+    viewModel: WaterViewModel = run {
+        val app = LocalContext.current.applicationContext as? TomaAwitaApplication
+        if (app != null) {
+            viewModel(
+                factory = WaterViewModel.provideFactory(
+                    app.container.waterRepository,
+                    app.container.settingsRepository
+                )
+            )
+        } else {
+            viewModel()
+        }
+    }
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -43,10 +56,19 @@ fun HomeScreen(
         state = state,
         onAddWater = viewModel::onAddWaterClicked,
         onCustomAmountClick = viewModel::onCustomAmountClicked,
-        onCustomizeClick = { /* TODO: editar los botones rápidos */ },
+        onCustomizeClick = viewModel::onAddAmountSheetOpened,
         onEditReminderClick = { /* TODO: ir a los ajustes de recordatorio */ },
         modifier = modifier
     )
+
+    if (state.showAddAmountSheet) {
+        AddAmountSheet(
+            amountMl = state.sheetAmountMl,
+            onAmountChange = viewModel::onSheetAmountChanged,
+            onConfirm = viewModel::onSheetConfirmed,
+            onDismiss = viewModel::onSheetDismissed
+        )
+    }
 
     state.pendingLimitConfirmationMl?.let { amount ->
         AlertDialog(
@@ -90,8 +112,7 @@ fun HomeContent(
         Text(dateText, style = MaterialTheme.typography.labelSmall.copy(letterSpacing = 1.5.sp), color = Muted)
         Spacer(Modifier.height(6.dp))
         Text(
-            text = if (state.userName.isBlank()) stringResource(R.string.home_greeting_anonymous)
-            else stringResource(R.string.home_greeting, state.userName),
+            text = stringResource(R.string.home_greeting),
             style = MaterialTheme.typography.headlineLarge,
             color = Ink
         )
@@ -130,7 +151,6 @@ private fun HomePreview() {
     TomaAwitaTheme {
         HomeContent(
             state = HomeUiState(
-                userName = "Sofía",
                 date = LocalDate.of(2025, 6, 10),
                 consumedMl = 1450,
                 dailyGoalMl = 2500,

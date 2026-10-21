@@ -16,7 +16,13 @@ private val LightColors = lightColorScheme(
     onSurface = Ink,
     surfaceVariant = Teal50,
     onSurfaceVariant = Muted,
-    outline = AppOutline
+    outline = AppOutline,
+    // Sin estos, los diálogos, menús y el reloj salen con el tono lavanda por defecto de Material.
+    surfaceContainerLowest = Color.White,
+    surfaceContainerLow = Color.White,
+    surfaceContainer = Color.White,
+    surfaceContainerHigh = Color.White,
+    surfaceContainerHighest = Teal50
 )
 
 // El diseño solo tiene versión clara, por eso no hay tema oscuro todavía.
