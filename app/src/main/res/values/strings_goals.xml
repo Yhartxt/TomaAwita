@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Pantalla de Objetivos -->
+    <string name="goals_category">PLAN DE HIDRATACIÓN</string>
+    <string name="goals_title">Tus objetivos</string>
+    <string name="goals_subtitle">Organiza tus metas según los días de tu semana.</string>
+    <string name="goals_active_count_label">objetivos activos</string>
+    <string name="goals_banner_tip">Un plan claro hace más fácil mantener el hábito.</string>
+
+    <string name="my_goals_title">Mis objetivos</string>
+    <string name="my_goals_subtitle">Metas de agua programadas</string>
+    <string name="add_goal_action">Agregar</string>
+    <string name="add_goal_full">Agregar objetivo</string>
+
+    <!-- Estado y detalles del objetivo -->
+    <string name="goal_status_active">ACTIVO</string>
+    <string name="goal_status_inactive">PAUSADO</string>
+    <string name="per_day">por día</string>
+    <string name="per_week_suffix">/sem</string>
+    <string name="all_days">Todos los días</string>
+    <plurals name="days_per_week">
+        <item quantity="one">%d día por semana</item>
+        <item quantity="other">%d días por semana</item>
+    </plurals>
+    <string name="today_progress_badge">%1$d%% hoy</string>
+
+    <!-- Hoja para agregar / editar objetivo -->
+    <string name="sheet_goal_category">PLAN DE HIDRATACIÓN</string>
+    <string name="sheet_goal_title">Configurar objetivo</string>
+    <string name="sheet_goal_name_label">Nombre del objetivo</string>
+    <string name="sheet_goal_name_hint">Ej. Días de oficina, Entrenamiento</string>
+    <string name="sheet_goal_amount_label">Meta diaria de agua</string>
+    <string name="sheet_goal_min_warning">Mínimo sugerido: 2,000 ml por día</string>
+    <string name="sheet_goal_days_label">Días que aplica este objetivo</string>
+    <string name="sheet_goal_weekly_summary">Meta semanal calculada</string>
+    <string name="sheet_goal_weekly_detail">%1$s por semana (%2$d días)</string>
+    <string name="sheet_goal_save">Guardar objetivo</string>
+</resources>
