@@ -56,8 +56,10 @@ import com.yharim.tomaawita.ui.theme.Teal700
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
+import com.yharim.tomaawita.logic.FormatLogic
+
 /** 1450 -> "1,450" (como en el diseño). */
-internal fun formatMl(ml: Int): String = String.format(Locale.US, "%,d", ml)
+internal fun formatMl(ml: Int): String = FormatLogic.formatMl(ml)
 
 private val timeFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("h:mm a", Locale.US)
 

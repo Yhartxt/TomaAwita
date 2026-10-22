@@ -20,35 +20,29 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.yharim.tomaawita.R
-import com.yharim.tomaawita.TomaAwitaApplication
+import com.yharim.tomaawita.data.di.DefaultAppContainer
+import com.yharim.tomaawita.logic.FormatLogic
+import com.yharim.tomaawita.ui.AppViewModelFactory
 import com.yharim.tomaawita.ui.theme.Ink
 import com.yharim.tomaawita.ui.theme.Muted
 import com.yharim.tomaawita.ui.theme.TomaAwitaTheme
 import java.time.LocalDate
 import java.time.LocalTime
-import java.time.format.DateTimeFormatter
 import java.util.Locale
 
 /** Punto de entrada: conecta el ViewModel con la pantalla. No tiene lógica de negocio. */
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    viewModel: WaterViewModel = run {
-        val app = LocalContext.current.applicationContext as? TomaAwitaApplication
-        if (app != null) {
-            viewModel(
-                factory = WaterViewModel.provideFactory(
-                    app.container.waterRepository,
-                    app.container.settingsRepository
-                )
-            )
-        } else {
-            viewModel()
-        }
-    }
+    factory: ViewModelProvider.Factory = run {
+        val context = LocalContext.current.applicationContext
+        remember(context) { AppViewModelFactory(DefaultAppContainer(context)) }
+    },
+    viewModel: WaterViewModel = viewModel(factory = factory)
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -97,7 +91,7 @@ fun HomeContent(
 ) {
     val locale = remember { Locale.forLanguageTag("es-MX") }
     val dateText = remember(state.date) {
-        state.date.format(DateTimeFormatter.ofPattern("EEEE, d 'de' MMMM", locale)).uppercase(locale)
+        FormatLogic.formatDateSpanish(state.date, locale)
     }
 
     Column(

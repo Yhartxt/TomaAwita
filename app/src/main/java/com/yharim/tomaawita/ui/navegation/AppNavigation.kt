@@ -7,29 +7,29 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.yharim.tomaawita.TomaAwitaApplication
+import com.yharim.tomaawita.data.di.DefaultAppContainer
+import com.yharim.tomaawita.ui.AppViewModelFactory
 import com.yharim.tomaawita.ui.components.TomaAwitaBottomBar
 import com.yharim.tomaawita.ui.goals.GoalsScreen
 import com.yharim.tomaawita.ui.home.HomeScreen
 import com.yharim.tomaawita.ui.reminder.ReminderScreen
 import com.yharim.tomaawita.ui.reminder.ReminderViewModel
 
-// Navegación simple por estado. Cuando haya más pantallas se cambia por NavHost.
 @Composable
 fun AppNavigation() {
     var tab by rememberSaveable { mutableStateOf(AppTab.Home) }
     var showAddReminder by rememberSaveable { mutableStateOf(false) }
-    val app = LocalContext.current.applicationContext as? TomaAwitaApplication
-    val reminderViewModel: ReminderViewModel = if (app != null) {
-        viewModel(factory = ReminderViewModel.provideFactory(app.container.settingsRepository))
-    } else {
-        viewModel()
-    }
+
+    val context = LocalContext.current.applicationContext
+    val factory = remember(context) { AppViewModelFactory(DefaultAppContainer(context)) }
+
+    val reminderViewModel: ReminderViewModel = viewModel(factory = factory)
 
     if (showAddReminder) {
         val close: () -> Unit = {
@@ -50,8 +50,14 @@ fun AppNavigation() {
             }
         ) { innerPadding ->
             when (tab) {
-                AppTab.Home -> HomeScreen(modifier = Modifier.padding(innerPadding))
-                AppTab.Goals -> GoalsScreen(modifier = Modifier.padding(innerPadding))
+                AppTab.Home -> HomeScreen(
+                    factory = factory,
+                    modifier = Modifier.padding(innerPadding)
+                )
+                AppTab.Goals -> GoalsScreen(
+                    factory = factory,
+                    modifier = Modifier.padding(innerPadding)
+                )
             }
         }
     }
